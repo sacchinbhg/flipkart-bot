@@ -6,7 +6,6 @@ def chatter_callback(message):
     #get_caller_id(): Get fully resolved name of local node
     s=str(message)
     print(list(s.split('"'))[1])
-    print(" ")
     
 def listener():
 
