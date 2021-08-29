@@ -35,7 +35,7 @@
 #include <boost/bind.hpp>
 #include <boost/thread.hpp>
 #include <iostream>
-
+#include <chrono>
 using namespace std;
 
 #include <ros/ros.h>
@@ -46,16 +46,16 @@ using namespace std;
 int main(int argc, char* argv[])
 {
   ros::init(argc, argv, "rosserial_server_socket_node");
-
+  using second = chrono::duration<int, ratio<1, 1>>; 
   int port[] = {11411, 11412, 11413, 11414};
   //ros::param::param<int>("~port", port, 11411);
-  boost::asio::io_service io_service;
+  boost::asio::io_context io_context;
   cout<<"dnt\n";
   for(int i=0;i<4;i++){
   cout<<port[i];
-  rosserial_server::TcpServer<> tcp_server(io_service, port[i]);
-  //cout << "Listening for rosserial TCP connections on port " << port;
-  io_service.run_until(const int chrono::time_point<Clock, ros::Duration> 5);
+  rosserial_server::TcpServer<> tcp_server(io_context, port[i]);
+  ROS_INFO_STREAM("Listening for rosserial TCP connections on port " << port);
+  io_context.run_for(second(3));
   // ros::Duration(5);
   }
   // io_service.run();
