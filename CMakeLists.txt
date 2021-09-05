@@ -203,3 +203,9 @@ include_directories(
 
 ## Add folders to be run by python nosetests
 # catkin_add_nosetests(test)
+
+#add_executable(${PROJECT_NAME}_socket_node src/socket_node1.cpp)
+#target_link_libraries(${PROJECT_NAME}_socket_node ${catkin_LIBRARIES} ${PROJECT_NAME}_lookup)
+#set_target_properties(${PROJECT_NAME}_socket_node PROPERTIES OUTPUT_NAME socket_node PREFIX "")
+#add_dependencies(${PROJECT_NAME}_socket_node ${catkin_EXPORTED_TARGETS})
+
