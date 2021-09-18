@@ -8,18 +8,16 @@ def chatter_callback1(message):
     s=str(message)
     #print(list(s.split('"'))[1])
     s=list(s.split('"'))[1]
-    print(s)
-    s='robo 1 finished'
     if(s=='robo 1 finished'):
+        print("Robo 1 finished")
         talker2()
-        print('ayo you moving mad fam')
 
 def chatter_callback2(message):
     #get_caller_id(): Get fully resolved name of local node
     s=str(message)
     #print(list(s.split('"'))[1])
     s=list(s.split('"'))[1]
-    print(s)
+    # print(s)
     if(s=='robo 2 finished'):
         print('Robo 2 finished')
         talker3()
@@ -42,26 +40,25 @@ def chatter_callback4(message):
     print(s)
     if(s=='robo 4 finished'):
         print('Robo 4 finished')
+        print(" ")
         print('Program over')
+        print("")
         exit()
 
-def such():
-    print("Hello I am sacchin")
 
 def talker1():
     pub = rospy.Publisher('chatter', Empty, queue_size=10)
     rospy.init_node('main', anonymous=True)
     rate = rospy.Rate(1) # 1hz
     i = 0
+    print("Begin task")
+    print("Publishing start for robo 1")
     while not rospy.is_shutdown():
-        hello_str = "Publishing finished for bot 1"
-        rospy.loginfo(hello_str)
         pub.publish()
         rate.sleep()
         i=i+1
         if i==5:
             break
-    such()
     listener1()
 
 def talker2():
@@ -69,9 +66,9 @@ def talker2():
     # rospy.init_node('talker2', anonymous=True)
     rate = rospy.Rate(1) # 1hz
     i = 0
+    print(" ")
+    print("Publishing 'Start' for robo 2")
     while not rospy.is_shutdown():
-        hello_str = "Publishing Finished for bot 2"
-        rospy.loginfo(hello_str)
         pub.publish()
         rate.sleep()
         i=i+1
@@ -85,6 +82,8 @@ def talker3():
     # rospy.init_node('talker2', anonymous=True)
     rate = rospy.Rate(1) # 1hz
     i = 0
+    print(" ")
+    print("Publishing 'Start' for robo 3")
     while not rospy.is_shutdown():
         hello_str = "Publishing Finished for bot 2"
         rospy.loginfo(hello_str)
@@ -101,6 +100,8 @@ def talker4():
     # rospy.init_node('talker2', anonymous=True)
     rate = rospy.Rate(1) # 1hz
     i = 0
+    print(" ")
+    print("Publishing 'Start' for robo 4")
     while not rospy.is_shutdown():
         hello_str = "Publishing Finished for bot 2"
         rospy.loginfo(hello_str)
